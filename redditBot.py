@@ -13,10 +13,29 @@ class RedditBot:
         self.cwd = os.getcwd()
         self.topLimit = "day"
         # bot instance
+        self.fetch_args();
+
         self.bot = praw.Reddit(botID, config_interpolation = config_interpolation)
         #self.bot.read_only = True
         
         print("Authenticated with: ", self.bot.user.me())
+
+    def fetch_args(self):
+        while True:
+            try:
+                limit_posts = int(input("Enter the amount of posts to fetch: "));
+                self.limitForPosts = limit_posts;
+                break;
+            except:
+                print("invalid entry!");
+        while True:
+            print("Enter the timeframe you want to look at")
+            print("valid: 'day', 'week', 'month', 'year'")
+            top_limit = input("Input: ")
+            if(top_limit == "day" or top_limit == "week" or top_limit == "month" or top_limit == "year"):
+                self.topLimit = top_limit;
+                break;
+        print("starting bot")
 
     def loadSubreddits(self):
         self.subreddits = []
