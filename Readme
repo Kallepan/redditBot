@@ -1,0 +1,1 @@
+Simply change the data in the praw ini in order to login with your reddit credentials. For further information see praw Documentation. Enter the subreddits you want to download in subreddits.csv.
